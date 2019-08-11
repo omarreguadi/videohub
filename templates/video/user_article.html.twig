@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for videos in video %}
+        <div class="container-fluid col-6 text-center">
+            <div class="form-group mt-2">
+                <h1 style="color: #ee6e70;">{{ videos.title }}</h1>
+            </div>
+            <div class="form-group mt-3">
+                <iframe width="560" height="315" src="{{ videos.url }}" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            <div class="form-group">
+                <li class="form-control">Description : {{ videos.description|nl2br }}</li>
+                <li class="form-control">Date : {{ videos.createdAt|date }}</li>
+            </div>
+            <div class="form-group">
+                <a class="mr-3" style="color: #1529aa;" href="{{ path('edit_video',{'id': videos.id} ) }}">Modifier</a>
+                <a style="color: #AA3333;" href="{{ path('remove_video', {'id': videos.id}) }}">Supprimer</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

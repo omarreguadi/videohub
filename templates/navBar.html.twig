@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed" style="background-color: slategray;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#"><img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Bootstrap</a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-uppercase font-weight-bold text-expanded"
+                   href="{{ path('home') }}">Accueil</a>
+            </li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase font-weight-bold text-expanded"
+                       href="{{ path('profile') }}">profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase font-weight-bold text-expanded"
+                       href="{{ path('video') }}">video</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase font-weight-bold text-expanded"
+                       href="{{ path('liste_video',{'id': app.user.id} ) }}">ma liste de video</a>
+                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase font-weight-bold text-expanded"
+                           href="{{ path('category') }}">categories</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase font-weight-bold text-expanded"
+                       href="{{ path('logout') }}">deconnexion</a>
+                </li>
+                <li class="nav-item float-right">
+                    <a class="nav-link text-uppercase font-weight-bold text-expanded"
+                       style="color: white" href="#">{{ app.user.firstname }}</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase font-weight-bold text-expanded"
+                       href="{{ path('login') }}">Connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase font-weight-bold text-expanded"
+                       href="{{ path('register') }}">Inscription</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="container-fluid col-6 text-center mt-3 alert alert-{{ label }}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <div class="container-fluid col-2 text-center mt-4">
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_row(form.title, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.save, {'attr': {'class': 'form-control btn btn-warning'}}) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
