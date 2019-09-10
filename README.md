@@ -1,9 +1,7 @@
 ## symfonyExam
 
-**Ghezal Ilies**
-
 ## Admin :
-Ndc : adminGhz@gmail.com	
+Ndc : admin@gmail.com	
 Mdp : admin
 
 - j'ai utilisé docker
