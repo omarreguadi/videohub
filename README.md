@@ -4,7 +4,6 @@
 Ndc : admin@gmail.com	
 Mdp : admin
 
-- j'ai utilisé docker
 - j'ai fais un ManyToMany sur video et categorie, seul l'admin peut cree une categorie
 lors de la creation de video si le user connecté choisi la categorie 
 - edit video 
